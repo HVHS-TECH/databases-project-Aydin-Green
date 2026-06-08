@@ -5,5 +5,13 @@ import {initializeApp}from"firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDdgYYt_2atKFvwO0U9pIHQwOp1rTIfmlU"
-}
+    apiKey: "AIzaSyDdgYYt_2atKFvwO0U9pIHQwOp1rTIfmlU",
+    authDomain: "aydin-green-12comp.firebaseapp.com",
+    databaseURL: "https://aydin-green-12comp-default-rtdb.firebaseio.com",
+    projectId: "aydin-green-12comp",
+    storageBucket: "aydin-green-12comp.firebasestorage.app",
+    appId: "1:114190641424;web;6ee090179cb85b80535d95"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
