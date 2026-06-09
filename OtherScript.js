@@ -97,6 +97,7 @@ function draw() {
 			text("you either cheated or got very lucky your time is 0 milliseconds", (windowWidth / 2), (windowHeight / 2));
 		} else {
 			text("you win! your finishing time is " + (Timer / 100) + " seconds", (windowWidth / 2), (windowHeight / 2));
+			firebase.database().ref('/ClickerScore').set(Timer)
 		}
 	}
 }
