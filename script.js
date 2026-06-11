@@ -1,5 +1,5 @@
 // Import the functions you need frin the SDKs you need
-import {initializeApp}from"firebase/app";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#availble-libraries
 
@@ -10,8 +10,11 @@ const firebaseConfig = {
     databaseURL: "https://aydin-green-12comp-default-rtdb.firebaseio.com",
     projectId: "aydin-green-12comp",
     storageBucket: "aydin-green-12comp.firebasestorage.app",
+    messagingSenderId: "114190641424",
     appId: "1:114190641424;web;6ee090179cb85b80535d95"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
+  console.log("Firebase initialize finished:");
+  console.log(firebase);
