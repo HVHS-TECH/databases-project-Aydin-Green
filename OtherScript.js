@@ -1,7 +1,7 @@
 // Var Setup
 var green = 0
 var red = 0
-
+var stopSpam = 0
 // Setup
 function setup() {
 	console.log("setup: ");
@@ -97,7 +97,10 @@ function draw() {
 			text("you either cheated or got very lucky your time is 0 milliseconds", (windowWidth / 2), (windowHeight / 2));
 		} else {
 			text("you win! your finishing time is " + (Timer / 100) + " seconds", (windowWidth / 2), (windowHeight / 2));
-			firebase.database().ref('/ClickerScore').set(Timer)
+			if (stopSpam == 0){
+			GetTimer(Timer)
+			stopSpam = 1
+			}
 		}
 	}
 }

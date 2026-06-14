@@ -15,6 +15,22 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  console.log("Firebase initialize finished:");
-  console.log(firebase);
+firebase.initializeApp(firebaseConfig);
+console.log("Firebase initialize finished:");
+console.log(firebase);
+
+var Timer = 0
+function GetTimer() {
+    console.log(Timer)
+    var userName = prompt("please enter your name")
+    var userAge = prompt("please enter your age (or don't i'm not your mother)")
+    firebase.database().ref('/ClickerScore').set(Timer);
+}
+var score = 0
+function GetScore() {
+    console.log(score)
+    var userName = prompt("please enter your name")
+
+    var userAge = prompt("please enter your age (or don't i'm not your mother)")
+    firebase.database().ref('/DasherScore').set(score);
+}
