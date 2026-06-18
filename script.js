@@ -24,7 +24,8 @@ function GetTimer() {
     console.log(Timer)
     var userName = prompt("please enter your name")
     var userAge = prompt("please enter your age (or don't i'm not your mother)")
-    firebase.database().ref('/ClickerScore').set(Timer);
+    firebase.database().ref('/Clicker/User/'+userName+'/Time').set(Timer);
+    firebase.database().ref('/Clicker/User/'+userName+'/Age').set(userAge);
 }
 var score = 0
 function GetScore() {
@@ -32,5 +33,6 @@ function GetScore() {
     var userName = prompt("please enter your name")
 
     var userAge = prompt("please enter your age (or don't i'm not your mother)")
-    firebase.database().ref('/DasherScore').set(score);
+    firebase.database().ref('/Dasher/User/'+userName+'/Score').set(score);
+    firebase.database().ref('/Dasher/User/'+userName+'/Age').set(userAge);
 }
