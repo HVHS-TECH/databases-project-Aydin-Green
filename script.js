@@ -36,6 +36,7 @@ function GetTimer() {
 var score = 0
 function GetScore() {
     console.log(score)
+    var PreviousScore = 0
     var userName = 0
     while(userName.length != 3){
     userName = prompt("please enter your name")
@@ -45,6 +46,13 @@ function GetScore() {
     }
     var userAge = prompt("please enter your age (or don't i'm not your mother)")
     console.log(userName.length)
+
+    firebase.database().ref('/Dasher/User/'+userName).once('value', DasherNameCheck)
+function DasherNameCheck(snapshot){
+console.log(snapshot)
+}
+    if (PreviousScore < score){
     firebase.database().ref('/Dasher/User/'+userName+'/Score').set(score);
+    }
     firebase.database().ref('/Dasher/User/'+userName+'/Age').set(userAge);
 }
