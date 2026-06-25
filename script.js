@@ -22,7 +22,13 @@ console.log(firebase);
 var Timer = 0
 function GetTimer() {
     console.log(Timer)
-    var userName = prompt("please enter your name")
+    var userName = 0
+    while(userName.length != 3){
+    userName = prompt("please enter your name")
+    if (userName.length != 3) {
+        alert ("Name must be 3 characters long (we would give you four but we need to prevent foul language)")
+    }
+    }
     var userAge = prompt("please enter your age (or don't i'm not your mother)")
     firebase.database().ref('/Clicker/User/'+userName+'/Time').set(Timer);
     firebase.database().ref('/Clicker/User/'+userName+'/Age').set(userAge);
@@ -30,9 +36,15 @@ function GetTimer() {
 var score = 0
 function GetScore() {
     console.log(score)
-    var userName = prompt("please enter your name")
-
+    var userName = 0
+    while(userName.length != 3){
+    userName = prompt("please enter your name")
+    if (userName.length != 3) {
+        alert ("Name must be 3 characters long (we would give you four but we need to prevent foul language)")
+    }
+    }
     var userAge = prompt("please enter your age (or don't i'm not your mother)")
+    console.log(userName.length)
     firebase.database().ref('/Dasher/User/'+userName+'/Score').set(score);
     firebase.database().ref('/Dasher/User/'+userName+'/Age').set(userAge);
 }
