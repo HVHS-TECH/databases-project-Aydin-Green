@@ -38,13 +38,22 @@ function GetScore() {
     console.log(score)
     var PreviousScore = 0
     var userName = 0
+    var userAge = 0
     while(userName.length != 3){
     userName = prompt("please enter your name")
     if (userName.length != 3) {
         alert ("Name must be 3 characters long (we would give you four but we need to prevent foul language)")
     }
     }
-    var userAge = prompt("please enter your age (or don't i'm not your mother)")
+  while(userAge < 1){
+    userAge = Number(prompt("please enter your age (or don't i'm not your mother)"))
+      if(userAge < 1){
+        alert ("ages bellow 1 are not valid. if you are bellow the age of 1 please lie.")
+      }
+      if(userAge > 9999){
+        alert ("really? just spamming numbers are we?")
+      }
+    }
     console.log(userName.length)
 
     firebase.database().ref('/Dasher/User/'+userName).once('value', DasherNameCheck)
