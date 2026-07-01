@@ -23,20 +23,28 @@ var Timer = 0
 function GetTimer() {
     console.log(Timer)
     var userName = 0
-    while(userName.length != 3){
+    /*while(userName.length != 3){
     userName = prompt("please enter your name")
     if (userName.length != 3) {
         alert ("Name must be 3 characters long (we would give you four but we need to prevent foul language)")
     }
-    }
-    var userAge = prompt("please enter your age (or don't i'm not your mother)")
+    } */
+    //var userAge = prompt("please enter your age (or don't i'm not your mother)")
     firebase.database().ref('/Clicker/User/'+userName+'/Time').set(Timer);
     firebase.database().ref('/Clicker/User/'+userName+'/Age').set(userAge);
+
+    firebase.database().ref('Clicker/User/').orderByValue(Time).once('value', readingClicker);
+    function readingClicker(snapshot){
+      snapshot.forEach(TimerAlert)
+    }
+    function TimerAlert(child){
+console.log(child.val())
+    } 
 }
 var score = 0
 function GetScore() {
     console.log(score)
-    var PreviousScore = 0
+    //var PreviousScore = 0
     var userName = 0
     var userAge = 0
     while(userName.length != 3){
@@ -54,14 +62,35 @@ function GetScore() {
         alert ("really? just spamming numbers are we?")
       }
     }
+    
+
     console.log(userName.length)
 
-    firebase.database().ref('/Dasher/User/'+userName).once('value', DasherNameCheck)
-function DasherNameCheck(snapshot){
+    //firebase.database().ref('/Dasher/User/'+userName).once('value', DasherNameCheck)
+//function DasherNameCheck(snapshot){
+//console.log(snapshot)
+//}
+    //if (PreviousScore < score){
+    firebase.database().ref('/Dasher/User/'+userName+'/Score').set(score);
+    //}
+    firebase.database().ref('/Dasher/User/'+userName+'/Age').set(userAge); 
+}
+function test(){
+  firebase.database().ref('/Dasher/User/nuh').once('value', DasherNameCheck)
+  function DasherNameCheck(snapshot){
+console.log(snapshot.val())
+var ben =  snapshot.val()
+console.log(ben)
+console.log(ben["Age"])
 console.log(snapshot)
 }
-    if (PreviousScore < score){
-    firebase.database().ref('/Dasher/User/'+userName+'/Score').set(score);
+}
+function testtwo(){
+firebase.database().ref('Clicker/User/').orderByChild("Time").once('value', readingClicker);
+    function readingClicker(snapshot){
+      snapshot.forEach(TimerAlert)
     }
-    firebase.database().ref('/Dasher/User/'+userName+'/Age').set(userAge);
+    function TimerAlert(child){
+console.log(child.val())
+    } 
 }
