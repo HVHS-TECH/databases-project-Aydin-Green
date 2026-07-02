@@ -33,13 +33,14 @@ function GetTimer() {
     firebase.database().ref('/Clicker/User/'+userName+'/Time').set(Timer);
     firebase.database().ref('/Clicker/User/'+userName+'/Age').set(userAge);
 
-    firebase.database().ref('Clicker/User').orderByChild('Time').once('value', readingClicker);
+    firebase.database().ref('Clicker/User/').orderByChild('Time').once('value', readingClicker);
     function readingClicker(snapshot){
       snapshot.forEach(TimerAlert)
     }
     function TimerAlert(child){
 console.log(child.val())
-alert(child.val())
+alert(child.val().Time)
+alert(child.key)
     } 
 }
 var score = 0
