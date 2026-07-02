@@ -23,22 +23,23 @@ var Timer = 0
 function GetTimer() {
     console.log(Timer)
     var userName = 0
-    /*while(userName.length != 3){
+    while(userName.length != 3){
     userName = prompt("please enter your name")
     if (userName.length != 3) {
         alert ("Name must be 3 characters long (we would give you four but we need to prevent foul language)")
     }
-    } */
-    //var userAge = prompt("please enter your age (or don't i'm not your mother)")
+    } 
+    var userAge = prompt("please enter your age (or don't i'm not your mother)")
     firebase.database().ref('/Clicker/User/'+userName+'/Time').set(Timer);
     firebase.database().ref('/Clicker/User/'+userName+'/Age').set(userAge);
 
-    firebase.database().ref('Clicker/User/').orderByValue(Time).once('value', readingClicker);
+    firebase.database().ref('Clicker/User').orderByChild('Time').once('value', readingClicker);
     function readingClicker(snapshot){
       snapshot.forEach(TimerAlert)
     }
     function TimerAlert(child){
 console.log(child.val())
+alert(child.val())
     } 
 }
 var score = 0
